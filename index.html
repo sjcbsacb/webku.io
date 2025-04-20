@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info Darurat & Berita Bencana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 0;
+      color: #2c3e50;
+    }
+
+    header {
+      background: linear-gradient(to right, #2b5876, #4e4376);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    header i {
+      margin-right: 12px;
+      color: #f1c40f;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ffffff, #f1f3f6);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      color: #34495e;
+      margin-bottom: 20px;
+      border-left: 6px solid #4e4376;
+      padding-left: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px 0;
+      font-size: 16px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+    }
+
+    li i {
+      margin-right: 10px;
+      color: #e74c3c;
+      width: 20px;
+      text-align: center;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .note {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    .berita-card {
+      font-family: 'Italiana', serif;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 25px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #c0392b;
+    }
+
+    form#laporanForm {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    form input, form textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    form button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    form button:hover {
+      background: #2980b9;
+    }
+
+    #toast {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #2ecc71;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .social-media {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .social-media a {
+      margin: 0 15px;
+      color: #34495e;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    .social-media a:hover {
+      color: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      iframe {
+        height: 400px;
+      }
+
+      header {
+        font-size: 1.8rem;
+        padding: 40px 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <i class="fas fa-triangle-exclamation"></i>
+    Info Darurat & Berita Bencana Wonosari
+  </header>
+
+  <div class="container">
+    <!-- Nomor Darurat -->
+    <div class="card">
+      <h2><i class="fas fa-phone-volume"></i> Nomor Darurat</h2>
+      <ul>
+        <li><i class="fas fa-phone-alt"></i> Polisi: 110</li>
+        <li><i class="fas fa-fire-extinguisher"></i> Pemadam Kebakaran: (0274) 391112</li>
+        <li><i class="fas fa-ambulance"></i> RSUD Wonosari: (0274) 391024</li>
+        <li><i class="fas fa-life-ring"></i> SAR DIY: (0274) 588118</li>
+        <li><i class="fas fa-phone"></i> BNPB: 117</li>
+        <li><i class="fas fa-hand-holding-medical"></i> PMI Gunungkidul: (0274) 391202</li>
+        <li><i class="fas fa-headset"></i> Layanan Darurat Gabungan: 112</li>
+        <li><i class="fas fa-broadcast-tower"></i> BMKG Yogyakarta: (0274) 548106</li>
+        <li><i class="fas fa-mountain"></i> PVMBG: (022) 7272606</li>
+        <li><i class="fas fa-house-damage"></i> Posko Bencana Nasional: (021) 3458400</li>
+      </ul>
+      <a href="tel:112" class="cta-button">🚨 Hubungi Sekarang: 112</a>
+    </div>
+
+    <!-- Berita Bencana Terbaru -->
+    <div class="card berita-card">
+      <h2><i class="fas fa-newspaper"></i> Berita Bencana Terbaru</h2>
+      <iframe src="https://gunungkidulkab.go.id/category/berita/" title="Berita Bencana Wonosari"></iframe>
+      <div class="note">Sumber: Situs Resmi Pemkab Gunungkidul</div>
+    </div>
+
+    <!-- Peta Wilayah Wonosari -->
+    <div class="card">
+      <h2><i class="fas fa-map-marked-alt"></i> Peta Wilayah Wonosari</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.594518844996!2d110.59817081477377!3d-7.864431694349033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bfc5e05e58fcb%3A0x91cc5cf8a126b7f5!2sWonosari!5e0!3m2!1sid!2sid!4v1616510316034!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Form Laporan -->
+    <form id="laporanForm">
+      <input type="text" name="nama" placeholder="Nama Anda" required>
+      <input type="text" name="lokasi" placeholder="Lokasi Bencana" required>
+      <textarea name="deskripsi" rows="4" placeholder="Deskripsi Kejadian" required></textarea>
+      <button type="submit">Kirim Laporan</button>
+    </form>
+
+    <!-- Laporan Terbaru -->
+    <div class="card">
+      <h2>Laporan Terbaru</h2>
+      <div id="laporanContainer"></div>
+    </div>
+
+    <!-- Sosial Media -->
+    <div class="social-media">
+      <a href="https://www.facebook.com/pemkab.gunungkidul" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/pemkabgunungkidul" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/pemkabgunungkidul" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <div id="toast">Laporan berhasil dikirim!</div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxI6KfjpG2zDDH3c-l3gddoDA4-BAZSfQBTZMKMNA/dev'; // Ganti dengan URL Web Apps kamu
+    const form = document.getElementById('laporanForm');
+
+    function showToast(pesan) {
+      const toast = document.getElementById('toast');
+      toast.textContent = pesan;
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 3000);
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        nama: formData.get('nama'),
+        lokasi: formData.get('lokasi'),
+        deskripsi: formData.get('deskripsi')
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        showToast('✅ Laporan berhasil dikirim!');
+        form.reset();
+        ambilLaporan(); // refresh laporan langsung
+      })
+      .catch(error => showToast('⚠️ Gagal mengirim laporan.'));
+    });
+
+    const dataURL = scriptURL;
+
+    async function ambilLaporan() {
+      const res = await fetch(dataURL);
+      const data = await res.json();
+      const container = document.getElementById('laporanContainer');
+      container.innerHTML = '';
+
+      data.reverse().forEach(laporan => {
+        const laporanHTML = `
+          <div style="margin-bottom: 20px; padding: 15px; border-radius: 10px; background-color: #ecf0f1;">
+            <strong>${laporan.nama}</strong> di <em>${laporan.lokasi}</em><br>
+            <small>${new Date(laporan.timestamp).toLocaleString()}</small>
+            <p>${laporan.deskripsi}</p>
+          </div>
+        `;
+        container.innerHTML += laporanHTML;
+      });
+    }
+
+    ambilLaporan();
+    setInterval(ambilLaporan, 30000);
+  </script>
+</body>
+</html>
